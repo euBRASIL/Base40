@@ -4,11 +4,13 @@
 # Using a simple alphanumeric set for now.
 # Excludes characters that might be confusing in some fonts (e.g., I, l, 1, O, 0).
 # Includes: A-H, J-N, P-Z, 2-9
+# Base40: 40 símbolos correspondentes aos 40 ângulos múltiplos de 9 graus
 DEFAULT_SYMBOLS = [
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-    '2', '3', '4', '5', '6', '7', '8', '9',
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' # Adding lowercase to reach 40 symbols
-] # Length should be 40
+    'α', 'β', 'γ', 'Δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ',
+    'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ',
+    'φ', 'χ', 'ψ', 'Ω', 'Ϙ', 'ω', 'Ϟ', 'Ϡ', 'Ҕ', 'Ԛ',
+    'Ӄ', 'Џ', 'Ʃ', 'Ɣ', 'Ӂ', 'Ҙ', 'ʤ', '⌀', 'ℓ', '∂'
+]
 
 def number_to_angle(n: int) -> int:
     """Converts a number n to an angle (n * 9) % 360."""
