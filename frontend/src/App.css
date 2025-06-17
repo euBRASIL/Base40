@@ -1,0 +1,206 @@
+.App {
+  text-align: center;
+  padding: 15px; /* Slightly reduced padding */
+  max-width: 1300px; /* Slightly increased max-width */
+  margin: 0 auto;
+  overflow-x: hidden; /* Prevent horizontal scroll from subtle glows */
+}
+
+.App-header {
+  background-color: #0D0D0D;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #00FF00;
+  margin-bottom: 25px; /* Adjusted margin */
+}
+
+.App-header h1 {
+  color: #00FF00;
+  margin: 0;
+  font-size: 2.2em; /* Slightly adjusted font size */
+  text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 15px #00FF00; /* Enhanced glowing effect */
+  font-weight: normal; /* Typical for Matrix style */
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column */
+  gap: 25px; /* Adjusted gap */
+}
+
+/* For wider screens, allow two columns for some sections if desired */
+/* This is a simple example; more complex layouts might need more specific component targeting */
+@media (min-width: 900px) {
+  .content-wrapper {
+    /* Example: grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); */
+    /* For now, keep it simple and let sections flow. Specific multi-column can be per-section. */
+  }
+  /* Example: Make Key and Address display side-by-side on wider screens */
+  #key-display-section, #address-display-section {
+     /* display: inline-block; /* Or use flex/grid on their parent */
+     /* width: calc(50% - 12.5px); /* Adjust width considering gap */
+  }
+}
+
+
+.view-section {
+  background-color: #050505;
+  border: 1px solid #005000;
+  border-radius: 8px;
+  padding: 20px; /* Increased padding */
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.2); /* Slightly enhanced glow */
+  text-align: left; /* Default text align for sections */
+}
+
+.view-section h2 {
+  color: #00FF00;
+  border-bottom: 1px dashed #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 15px; /* Added margin */
+  font-size: 1.5em; /* Consistent heading size */
+  font-weight: normal;
+  text-shadow: 0 0 3px #00FF00;
+}
+
+button {
+  background-color: #003000;
+  color: #00FF00;
+  border: 1px solid #00FF00;
+  padding: 10px 18px; /* Adjusted padding */
+  font-family: inherit; /* Inherit from body */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
+  margin: 5px;
+  font-size: 0.95em;
+  text-shadow: 0 0 2px #008000;
+}
+
+button:hover:not(:disabled) { /* Apply hover only if not disabled */
+  background-color: #005000;
+  color: #CCFFCC; /* Lighter green text on hover */
+  box-shadow: 0 0 12px #00FF00, 0 0 5px #00FF00 inset; /* Enhanced glow on hover */
+}
+
+button:disabled {
+  background-color: #001000;
+  color: #004000; /* Darker text for disabled */
+  border-color: #004000;
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+input[type="text"], textarea { /* Though not used yet, good to have */
+  background-color: #0A0A0A;
+  color: #00FF00;
+  border: 1px solid #008000;
+  padding: 10px; /* Increased padding */
+  border-radius: 4px;
+  font-family: inherit; /* Inherit from body */
+  width: calc(100% - 22px); /* Adjust for padding and border */
+  margin-bottom: 10px;
+  font-size: 0.95em;
+}
+
+pre {
+  background-color: #030303; /* Darker background for pre tags */
+  border: 1px solid #004000; /* Darker border */
+  padding: 12px; /* Increased padding */
+  border-radius: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px; /* Keep as is or adjust per component */
+  overflow-y: auto;
+  text-align: left;
+  font-size: 0.9em; /* Slightly smaller for pre content */
+  line-height: 1.4; /* Better readability */
+}
+
+/* Key/Address Display Specifics */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+  gap: 20px; /* Adjusted gap */
+  text-align: left;
+}
+
+.info-item {
+  background-color: #0A0A0A;
+  padding: 15px; /* Increased padding */
+  border-radius: 4px;
+  border: 1px solid #003000;
+}
+
+.info-item strong {
+  display: block;
+  margin-bottom: 8px; /* Adjusted margin */
+  color: #33FF33; /* Slightly brighter green for strong tags */
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.info-item pre {
+  margin-top: 0;
+  background-color: #000;
+  border-color: #005000;
+  font-size: 0.85em; /* Smaller font for hex strings etc. */
+}
+
+/* Steps Table Styling */
+.table-container {
+  max-height: 450px; /* Slightly increased height */
+  overflow-y: auto;
+  border: 1px solid #005000;
+  border-radius: 4px;
+  background-color: #030303; /* Match pre background for consistency */
+}
+
+.view-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em; /* Adjusted font size for dense table */
+}
+
+.view-section th, .view-section td {
+  border: 1px solid #003000;
+  padding: 8px 10px; /* Adjusted padding */
+  text-align: left;
+  word-break: break-all;
+}
+
+.view-section th {
+  background-color: #002500; /* Darker header for table */
+  color: #33FF33; /* Brighter header text */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: normal;
+}
+
+.view-section tbody tr:nth-child(odd) {
+  background-color: #070707; /* Slightly different for odd rows in table */
+}
+.view-section tbody tr:nth-child(even) {
+  background-color: #030303; /* Match container for even rows */
+}
+
+.view-section tbody tr:hover {
+  background-color: #004F00; /* Darker green, less intense than button */
+  color: #EEFFEE; /* Lighter text on hover */
+}
+
+/* Visualization Specifics */
+#visualization-section text { /* General text styling within SVG */
+    font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+    /* fill: #00FF00; /* Default fill, can be overridden */
+}
+
+/* Footer */
+footer {
+  margin-top: 40px; /* Increased margin */
+  padding-top: 20px;
+  border-top: 1px dashed #008000;
+  font-size: 0.9em;
+  color: #008000; /* Darker green for footer text */
+}
