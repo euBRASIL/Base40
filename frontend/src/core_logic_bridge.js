@@ -5,8 +5,6 @@
 // In a real full-stack setup, this might be handled differently (e.g., API endpoint, shared package).
 
 export const DEFAULT_SYMBOLS = [
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-    '2', '3', '4', '5', '6', '7', '8', '9',
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'
+    'α', 'β', 'γ', 'Δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'Ω', 'Ϙ', 'ω', 'Ϟ', 'Ϡ', 'Ҕ', 'Ԛ', 'Ӄ', 'Џ', 'Ʃ', 'Ɣ', 'Ӂ', 'Ҙ', 'ʤ', '⌀', 'ℓ', '∂'
 ];
 // Ensure this list exactly matches the one in app/core_logic/base40.py

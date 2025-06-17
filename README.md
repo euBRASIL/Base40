@@ -13,7 +13,7 @@ A primeira fase do projeto concentrou-se na construção da lógica fundamental 
 
 1.  **Sistema Base40 Core (`app/core_logic/base40.py`)**:
     *   **Mapeamento Número-Ângulo-Símbolo**: Converte um número inteiro `n` em um ângulo (`(n * 9) % 360`) e, subsequentemente, em um dos 40 símbolos Base40 definidos.
-        *   Os símbolos padrão são: `A-H, J-N, P-Z, 2-9, a-h`.
+    *   Os 40 símbolos Base40 customizados utilizados são: `α, β, γ, Δ, ε, ζ, η, θ, ι, κ, λ, μ, ν, ξ, ο, π, ρ, σ, τ, υ, φ, χ, ψ, Ω, Ϙ, ω, Ϟ, Ϡ, Ҕ, Ԛ, Ӄ, Џ, Ʃ, Ɣ, Ӂ, Ҙ, ʤ, ⌀, ℓ, ∂`.
     *   **Mapeamento Inverso**: Converte um símbolo Base40 de volta para seu índice numérico (0-39).
     *   **Conversão Decimal <=> Base40**: Funções para converter números inteiros decimais para sua representação em string Base40 e vice-versa. Por exemplo, `decimal_to_base40(1600)` resulta em `"BAA"` (usando símbolos padrão).
 
