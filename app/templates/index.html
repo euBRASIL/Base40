@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - Base40 Crypto Suite{% endblock %}
+
+{% block content %}
+  <section class="view-section" id="controls-section">
+    <h2>Controls</h2>
+    <form method="POST" action="{{ url_for('ui.index') }}">
+      <button type="submit" name="action" value="generate">Generate New Key Pair</button>
+      <a href="{{ url_for('ui.export_json') if data else '#' }}" class="button-link {% if not data %}disabled{% endif %}">Export JSON</a>
+      <a href="{{ url_for('ui.export_csv') if data else '#' }}" class="button-link {% if not data %}disabled{% endif %}">Export Steps CSV</a>
+    </form>
+    {% if error_message %}
+      <p style="color: #FF0000; margin-top: 10px;">Error: {{ error_message }}</p>
+    {% endif %}
+  </section>
+
+  <section class="view-section" id="key-display-section">
+    <h2>Key Information</h2>
+    <div class="info-grid">
+      <div class="info-item"><strong>Private Key (Hex):</strong><pre>{{ data.private_key_hex | default('N/A', true) }}</pre></div>
+      <div class="info-item"><strong>Private Key (Base40):</strong><pre>{{ data.private_key_base40 | default('N/A', true) }}</pre></div>
+      <div class="info-item"><strong>Public Key (Uncompressed Hex):</strong><pre style="word-break: break-all;">{{ data.public_key_uncompressed_hex | default('N/A', true) }}</pre></div>
+      <div class="info-item"><strong>Public Key X-Coordinate (Base40):</strong><pre>{{ data.public_key_x_base40 | default('N/A', true) }}</pre></div>
+    </div>
+  </section>
+
+  <section class="view-section" id="address-display-section">
+    <h2>Addresses</h2>
+    <div class="info-grid">
+      <div class="info-item"><strong>Base40 Address (from RIPEMD-160):</strong><pre>{{ data.address_base40 | default('N/A', true) }}</pre></div>
+      <div class="info-item"><strong>Bitcoin Address (Base58Check):</strong><pre>{{ data.address_bitcoin_base58check | default('N/A', true) }}</pre></div>
+    </div>
+    {% if data and (data.address_base40 or data.address_bitcoin_base58check) %}
+        <p style="color: yellow; font-size: 0.8em; margin-top: 10px;">Reminder: Hash-derived addresses may be incorrect in this environment due to backend anomalies.</p>
+    {% endif %}
+  </section>
+
+  <section class="view-section" id="visualization-section">
+    <h2>Symbolic Visualization</h2>
+    <div id="svg-visualization-container" style="width: 320px; height: 320px; border: 1px solid #00FF00; margin: 20px auto; display: flex; align-items: center; justify-content: center; background-color: #030303;">
+      {% if svg_visualization %}{{ svg_visualization | safe }}{% else %}<p>Visualization Area</p>{% endif %}
+    </div>
+  </section>
+
+  <section class="view-section" id="steps-table-section">
+    <h2>Scalar Multiplication Steps (256)</h2>
+    <div class="table-container">
+      {% if data and data.scalar_multiplication_steps %}
+      <table>
+        <thead><tr><th>Step</th><th>Bit</th><th>Operation</th><th>Point X (Hex)</th><th>Point Y (Hex)</th><th>B40 Angle</th><th>B40 Symbol</th><th>Rodopios</th></tr></thead>
+        <tbody>
+          {% for step in data.scalar_multiplication_steps %}
+          <tr>
+            <td>{{ step.step_number }}</td><td>{{ step.bit_value }}</td><td>{{ step.operation }}</td>
+            <td>{{ step.point_value_hex.x if step.point_value_hex else ( 'Infinity' if step.point_value is none else 'N/A') }}</td>
+            <td>{{ step.point_value_hex.y if step.point_value_hex else ( 'Infinity' if step.point_value is none else 'N/A') }}</td>
+            <td>{{ step.base40_angle if step.base40_angle is not none else 'N/A' }}</td>
+            <td>{{ step.base40_symbol | default('N/A', true) }}</td>
+            <td>{{ step.rodopios if step.rodopios is not none else 'N/A' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}<p>No scalar multiplication steps to display. Generate keys first.</p>{% endif %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts_extra %}
+  <script>
+    // Embed data for JavaScript
+    var animationSymbolList = {{ animation_symbols_json | default('[]' | tojson) | safe }};
+    var DEFAULT_SYMBOLS_FOR_JS = {{ default_symbols_json | default('[]' | tojson) | safe }};
+  </script>
+  <script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+  <script>
+    // Initialize animation when the page loads and data is available
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof animateRodopios === 'function' && animationSymbolList && DEFAULT_SYMBOLS_FOR_JS) {
+        animateRodopios(animationSymbolList, DEFAULT_SYMBOLS_FOR_JS);
+      }
+    });
+  </script>
+{% endblock %}

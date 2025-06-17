@@ -1,0 +1,212 @@
+/* app/static/css/style.css */
+body {
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000; /* Matrix black background */
+  color: #00FF00; /* Matrix green text */
+  padding: 15px;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+header.main-header {
+  background-color: #0D0D0D;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #00FF00;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+header.main-header h1 {
+  color: #00FF00;
+  margin: 0;
+  font-size: 2.2em;
+  text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 15px #00FF00;
+  font-weight: normal;
+}
+
+.view-section {
+  background-color: #050505;
+  border: 1px solid #005000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px; /* Space between sections */
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+  text-align: left;
+}
+
+.view-section h2 {
+  color: #00FF00;
+  border-bottom: 1px dashed #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-weight: normal;
+  text-shadow: 0 0 3px #00FF00;
+}
+
+button, input[type="submit"] {
+  background-color: #003000;
+  color: #00FF00;
+  border: 1px solid #00FF00;
+  padding: 10px 18px;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
+  margin: 5px;
+  font-size: 0.95em;
+  text-shadow: 0 0 2px #008000;
+}
+
+button:hover:not(:disabled), input[type="submit"]:hover:not(:disabled) {
+  background-color: #005000;
+  color: #CCFFCC;
+  box-shadow: 0 0 12px #00FF00, 0 0 5px #00FF00 inset;
+}
+
+button:disabled, input[type="submit"]:disabled {
+  background-color: #001000;
+  color: #004000;
+  border-color: #004000;
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+pre {
+  background-color: #030303;
+  border: 1px solid #004000;
+  padding: 12px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.info-item {
+  background-color: #0A0A0A;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #003000;
+}
+
+.info-item strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #33FF33;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.info-item pre { /* Styles for pre inside info-item */
+  margin-top: 0;
+  background-color: #000;
+  border-color: #005000;
+  font-size: 0.85em;
+}
+
+.table-container {
+  max-height: 450px;
+  overflow-y: auto;
+  border: 1px solid #005000;
+  border-radius: 4px;
+  background-color: #030303;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em;
+}
+
+th, td {
+  border: 1px solid #003000;
+  padding: 8px 10px;
+  text-align: left;
+  word-break: break-all;
+}
+
+th {
+  background-color: #002500;
+  color: #33FF33;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure headers are above table content during scroll if table-container is the scroller */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #070707;
+}
+tbody tr:nth-child(even) {
+  background-color: #030303;
+}
+
+tbody tr:hover {
+  background-color: #004F00;
+  color: #EEFFEE;
+}
+
+footer.main-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px dashed #008000;
+  font-size: 0.9em;
+  color: #008000;
+  text-align: center;
+}
+
+/* SVG text styling */
+#visualization-section svg text {
+    font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+    fill: #00FF00; /* Default fill, can be overridden by specific classes or attributes */
+}
+
+a.button-link {
+  display: inline-block; /* Or 'block' if they should take full width in their container */
+  text-decoration: none;
+  background-color: #003000;
+  color: #00FF00;
+  border: 1px solid #00FF00;
+  padding: 10px 18px;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
+  margin: 5px;
+  font-size: 0.95em;
+  text-shadow: 0 0 2px #008000;
+}
+
+a.button-link:hover:not(.disabled) {
+  background-color: #005000;
+  color: #CCFFCC;
+  box-shadow: 0 0 12px #00FF00, 0 0 5px #00FF00 inset;
+}
+
+a.button-link.disabled {
+  background-color: #001000;
+  color: #004000;
+  border-color: #004000;
+  cursor: not-allowed;
+  text-shadow: none;
+  pointer-events: none; /* Make it non-clickable */
+}
